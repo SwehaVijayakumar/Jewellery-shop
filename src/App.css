@@ -18,6 +18,14 @@ body {
   color: rgb(0, 0, 0);
   font-style:normal;
 }
+
+.new-arrivals{
+  text-align: center;
+  color: rgb(0, 0, 0);
+  font-style:normal;
+  
+}
+
 .category-list {
   display: flex;
   flex-wrap: wrap;
