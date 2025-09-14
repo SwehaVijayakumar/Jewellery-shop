@@ -5,6 +5,6 @@ import { CartProvider } from "./context/CartContext";
 
 createRoot(document.getElementById("root")).render(
   <CartProvider>
-    <App />git add .
+    <App />
   </CartProvider>
 );
