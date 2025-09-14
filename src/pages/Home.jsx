@@ -4,6 +4,8 @@ import ProductCard from "../components/ProductCard";
 
 import "../App.css";
 
+import chain2 from "../images/chain2.jpg";
+
 const Home = () => {
   const categories = [
     { title: "Earams", image: "/images/chain2.jpg" },
@@ -22,7 +24,7 @@ const Home = () => {
     <div>
       {/* Banner */}
       <section className="banner">
-        <img src="/images/images.jpg" alt="Banner" />
+        <img src={chain2} alt="Banner" />
       </section>
 
       {/* Categories */}
