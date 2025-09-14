@@ -6,7 +6,7 @@ import "../App.css";
 
 const Home = () => {
   const categories = [
-    { title: "Earams", image: "/images/earams.jpg" },
+    { title: "Earams", image: "/images/chain2.jpg" },
     { title: "Necklaces", image: "/images/necklaces.jpg" },
     { title: "Earrings", image: "/images/earrings.jpg" },
     { title: "Chains", image: "/images/chains.jpg" },
