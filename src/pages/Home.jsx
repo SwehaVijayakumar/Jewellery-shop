@@ -22,7 +22,7 @@ const Home = () => {
     <div>
       {/* Banner */}
       <section className="banner">
-        <img src="/images/neckchain.jpg" alt="Banner" />
+        <img src="/images/images.jpg" alt="Banner" />
       </section>
 
       {/* Categories */}
