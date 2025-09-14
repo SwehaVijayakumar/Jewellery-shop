@@ -23,7 +23,7 @@ const Home = () => {
   return (
     <div>
       <section className="banner">
-        <img src={base + "images/chain2.jpg"} alt="Banner" />
+        <img src={base + "images/neckchain.jpg"} alt="Banner" />
       </section>
 
       <section className="categories">
