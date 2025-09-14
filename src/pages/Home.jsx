@@ -9,7 +9,7 @@ const base = import.meta.env.BASE_URL;
 const Home = () => {
   const categories = [
     { title: "Earams", image: base + "images/chain2.jpg" },
-    { title: "Necklaces", image: base + "images/necklaces.jpg" },
+    { title: "Necklaces", image: base + "images/necklace.jpg" },
     { title: "Earrings", image: base + "images/earrings.jpg" },
     { title: "Chains", image: base + "images/chains.jpg" },
   ];
@@ -22,11 +22,25 @@ const Home = () => {
 
   return (
     <div>
-      <section className="banner">
-        <img src={base + "images/neckchain.jpg"} alt="Banner" />
+      {/* Video Banner with Overlay */}
+      <section className="video-banner">
+        <video
+          src={base + "videos/chain.mp4"}
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="home-video"
+        />
+        <div className="video-overlay">
+          <h1>Welcome to Jewellery Shop</h1>
+          <p>Explore Our Latest Collections</p>
+          <a href="#categories" className="shop-now-btn">Shop Now</a>
+        </div>
       </section>
 
-      <section className="categories">
+      {/* Categories */}
+      <section id="categories" className="categories">
         <h2>Shop By Category</h2>
         <div className="category-list">
           {categories.map((cat, idx) => (
@@ -35,6 +49,7 @@ const Home = () => {
         </div>
       </section>
 
+      {/* New Arrivals */}
       <section className="new-arrivals">
         <h2>New Arrivals</h2>
         <div className="product-list">
