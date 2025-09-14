@@ -10,7 +10,7 @@ const Navbar = () => {
     <nav className="navbar">
       {/* Logo */}
       <div className="logo">
-        <h1>HELLO</h1>
+        <h1>Jewelry</h1>
       </div>
 
       {/* Nav Links (desktop) */}
