@@ -1,33 +1,31 @@
+// src/pages/Home.jsx
 import React from "react";
 import CategoryCard from "../components/CategoryCard";
 import ProductCard from "../components/ProductCard";
-
 import "../App.css";
 
-import chain2 from "../images/chain2.jpg";
+const base = import.meta.env.BASE_URL;
 
 const Home = () => {
   const categories = [
-    { title: "Earams", image: "/images/chain2.jpg" },
-    { title: "Necklaces", image: "/images/necklaces.jpg" },
-    { title: "Earrings", image: "/images/earrings.jpg" },
-    { title: "Chains", image: "/images/chains.jpg" },
+    { title: "Earams", image: base + "images/chain2.jpg" },
+    { title: "Necklaces", image: base + "images/necklaces.jpg" },
+    { title: "Earrings", image: base + "images/earrings.jpg" },
+    { title: "Chains", image: base + "images/chains.jpg" },
   ];
 
   const products = [
-    { name: "Favorite Oxider Mixed", price: 250, image: "/images/pro1.jpg" },
-    { name: "Navapriya Cute Oxider Box", price: 300, image: "/images/pro2.jpg", sale: true },
-    { name: "Cute Necklace with white Beads", price: 350, image: "/images/pro3.jpg" },
+    { name: "Favorite Oxider Mixed", price: 250, image: base + "images/pro1.jpg" },
+    { name: "Navapriya Cute Oxider Box", price: 300, image: base + "images/pro2.jpg", sale: true },
+    { name: "Cute Necklace with white Beads", price: 350, image: base + "images/pro3.jpg" },
   ];
 
   return (
     <div>
-      {/* Banner */}
       <section className="banner">
-        <img src={chain2} alt="Banner" />
+        <img src={base + "images/chain2.jpg"} alt="Banner" />
       </section>
 
-      {/* Categories */}
       <section className="categories">
         <h2>Shop By Category</h2>
         <div className="category-list">
@@ -37,7 +35,6 @@ const Home = () => {
         </div>
       </section>
 
-      {/* New Arrivals */}
       <section className="new-arrivals">
         <h2>New Arrivals</h2>
         <div className="product-list">
