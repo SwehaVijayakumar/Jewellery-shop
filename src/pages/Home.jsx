@@ -22,8 +22,7 @@ const Home = () => {
     <div>
       {/* Banner */}
       <section className="banner">
-        {/* ✅ remove "public/" from path */}
-        <img src="/images/chain2.jpg" alt="Banner" />
+        <img src="/images/neckchain.jpg" alt="Banner" />
       </section>
 
       {/* Categories */}
