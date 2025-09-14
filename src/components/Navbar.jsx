@@ -25,7 +25,7 @@ const Navbar = () => {
       {/* Cart + Hamburger */}
       <div className="right-icons">
         <div className="cart-wrapper">
-          <div className="cart-icon">🛒</div>
+          {/* <div className="cart-icon">🛒</div> */}
           {cartItems.length > 0 && (
             <span className="cart-badge">{cartItems.length}</span>
           )}
