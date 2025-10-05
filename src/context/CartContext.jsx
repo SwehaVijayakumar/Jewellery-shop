@@ -1,25 +1,26 @@
-import React, { createContext, useState, useContext } from "react";
+// src/context/CartContext.jsx
+import React, { createContext, useState } from "react";
 
-// Create context
-const CartContext = createContext();
+export const CartContext = createContext();
 
-// Custom hook for using cart easily
-export const useCart = () => useContext(CartContext);
-
-// Provider component
 export const CartProvider = ({ children }) => {
-  const [cartItems, setCartItems] = useState([]);
+  const [cart, setCart] = useState([]);
+  const [wishlist, setWishlist] = useState([]);
 
-  const addToCart = (item) => {
-    setCartItems((prev) => [...prev, item]);
+  const addToCart = (product) => {
+    if (!cart.find((item) => item.name === product.name)) {
+      setCart([...cart, product]);
+    }
   };
 
-  const removeFromCart = (itemName) => {
-    setCartItems((prev) => prev.filter((item) => item.name !== itemName));
+  const addToWishlist = (product) => {
+    if (!wishlist.find((item) => item.name === product.name)) {
+      setWishlist([...wishlist, product]);
+    }
   };
 
   return (
-    <CartContext.Provider value={{ cartItems, addToCart, removeFromCart }}>
+    <CartContext.Provider value={{ cart, addToCart, wishlist, addToWishlist }}>
       {children}
     </CartContext.Provider>
   );

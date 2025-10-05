@@ -35,7 +35,7 @@ const Home = () => {
         <div className="video-overlay">
           <h1>Welcome to Jewellery Shop</h1>
           <p>Explore Our Latest Collections</p>
-          <a href="#categories" className="shop-now-btn">Shop Now</a>
+          <a href="categories" className="shop-now-btn">Shop Now</a>
         </div>
       </section>
 

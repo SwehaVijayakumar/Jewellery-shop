@@ -1,109 +1,93 @@
+/* Navbar Styles */
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 2rem;
-  background: #fff;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  padding: 0.8rem 2rem;
+  background-color: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  transition: background 0.3s;
 }
 
-.nav-links {
-  list-style: none;
-  display: flex;
-  gap: 1.5rem;
+body.dark-mode .navbar {
+  background-color: #222;
 }
 
-.nav-links a {
-  text-decoration: none;
-  color: #333;
+/* Logo */
+.logo {
+  font-size: 15px;
   font-weight: bold;
 }
 
-.nav-links a:hover {
-  color: #b30000;
+/* Nav Links */
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 1rem;
 }
 
-.active {
-  color: #b30000 !important;
-  border-bottom: 2px solid #b30000;
+.nav-links li a {
+  text-decoration: none;
+  color: inherit;
+  font-weight: 500;
 }
 
+.nav-links li a.active {
+  font-weight: bold;
+}
+
+/* Hamburger Icon */
 .menu-icon {
   display: none;
-  font-size: 2rem;
+  font-size: 1.5rem;
   cursor: pointer;
 }
 
-.cart-icon {
-  font-size: 1.5rem;
+/* Theme Toggle Button */
+.theme-toggle {
+  background: transparent;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  margin-left: 1rem;
 }
 
-/* ✅ Mobile View */
+/* Mobile Styles */
 @media (max-width: 768px) {
+  .menu-icon {
+    display: block;
+  }
   .nav-links {
     display: none;
     flex-direction: column;
     position: absolute;
-    top: 70px;
-    right: 0;
-    background: white;
-    width: 200px;
-    padding: 1rem;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    top: 60px;
+    left: 0;
+    width: 100%;
+    background-color: #fff;
+    padding: 1rem 0;
+    gap: 0;
   }
-
+  body.dark-mode .nav-links {
+    background-color: #222;
+  }
   .nav-links.mobile-open {
     display: flex;
   }
-
-  .menu-icon {
-    display: block;
+  .nav-links li {
+    padding: 0.5rem 0;
+    text-align: center;
   }
 }
-/* Search Bar */
-.search-bar {
-  display: flex;
-  align-items: center;
-  background: #f5f5f5;
-  padding: 5px 10px;
-  border-radius: 5px;
-}
 
-.search-bar input {
-  border: none;
-  background: transparent;
-  outline: none;
-}
-
-.search-bar button {
-  border: none;
-  background: transparent;
-  cursor: pointer;
-}
-
-/* Right Icons */
-.right-icons {
-  display: flex;
-  gap: 1rem;
-  align-items: center;
-}
-
-/* Dark Mode */
-body.dark-mode {
-  background: #111;
-  color: #fff;
-}
-
-.navbar.dark {
-  background: #743b3b;
-}
-
-.navbar.dark .nav-links a,
-.navbar.dark .logo a,
-.navbar.dark .search-bar input {
-  color: #ffffff;
-  
-}
-.logo{
-  font-size: 10px;
+/* Small Mobile Adjustments */
+@media (max-width: 480px) {
+  .logo {
+    font-size: 1rem;
+  }
+  .theme-toggle {
+    font-size: 1rem;
+  }
 }

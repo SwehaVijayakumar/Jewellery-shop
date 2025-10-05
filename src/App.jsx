@@ -14,20 +14,18 @@ function App() {
   return (
     <Router>
       <Navbar />
-      <Home/>
       <Routes>
-        {/* Default Home Route */}
+        {/* Home page opens automatically */}
         <Route path="/" element={<Home />} />
 
-        {/* Other Pages */}
         <Route path="/shop" element={<Shop />} />
         <Route path="/categories" element={<Categories />} />
         <Route path="/login" element={<Login />} />
         <Route path="/wishlist" element={<Wishlist />} />
         <Route path="/cart" element={<Cart />} />
 
-        {/* Redirect unknown URLs to Home */}
-        
+        {/* Redirect unknown paths to Home */}
+        <Route path="*" element={<Navigate to="/" />} />
       </Routes>
       <Footer />
     </Router>

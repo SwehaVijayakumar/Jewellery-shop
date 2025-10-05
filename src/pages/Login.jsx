@@ -1,31 +1,55 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
 
-  const handleLogin = () => {
-    alert(`Login Attempt: ${email}`);
+  const handleLogin = (e) => {
+    e.preventDefault();
+
+    // Simple validation example
+    if (!email || !password) {
+      setError("Please fill in all fields.");
+      return;
+    }
+
+    // Dummy login logic (replace with real authentication)
+    if (email === "user@example.com" && password === "123456") {
+      setError("");
+      alert("Login successful!");
+    } else {
+      setError("Invalid email or password.");
+    }
   };
 
   return (
-    <div className="login-page">
-      <h2>Login</h2>
-      <div className="login-box">
-        <input
-          type="email"
-          placeholder="Enter Email"
-          value={email}
+    <div className="page-container login-page">
+      <h2>Login to Your Account</h2>
+      <form className="login-box" onSubmit={handleLogin}>
+        {error && <p className="error-msg">{error}</p>}
+        <input 
+          type="email" 
+          placeholder="Email" 
+          value={email} 
           onChange={(e) => setEmail(e.target.value)}
+          required
         />
-        <input
-          type="password"
-          placeholder="Enter Password"
-          value={password}
+        <input 
+          type="password" 
+          placeholder="Password" 
+          value={password} 
           onChange={(e) => setPassword(e.target.value)}
+          required
         />
-        <button onClick={handleLogin}>Login</button>
-      </div>
+        <button type="submit">Login</button>
+        <div className="login-links">
+          <Link to="/forgot-password">Forgot Password?</Link>
+          <span> | </span>
+          <Link to="/signup">Sign Up</Link>
+        </div>
+      </form>
     </div>
   );
 };
