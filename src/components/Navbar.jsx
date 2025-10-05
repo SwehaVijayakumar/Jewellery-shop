@@ -23,13 +23,22 @@ const Navbar = () => {
   const toggleMenu = () => setMenuOpen(!menuOpen);
   const closeMenu = () => setMenuOpen(false);
 
+  const links = [
+    { name: "Home", path: "/" },
+    { name: "Shop", path: "/shop" },
+    { name: "Categories", path: "/categories" },
+    { name: "Login", path: "/login" },
+    { name: "Wishlist", path: "/wishlist" },
+    { name: "Cart", path: "/cart" },
+  ];
+
   return (
     <>
       {/* Navbar */}
-      <nav className={`navbar ${darkMode ? "dark" : ""}`}>
+      <nav className="navbar">
         <h1 className="logo">JEWELLERY SHOP</h1>
 
-        {/* Right-side controls: Hamburger + Theme toggle */}
+        {/* Right controls */}
         <div className="nav-controls">
           <button className="theme-toggle" onClick={toggleTheme}>
             {darkMode ? "🌙" : "☀️"}
@@ -39,14 +48,13 @@ const Navbar = () => {
           </div>
         </div>
 
-        {/* Desktop nav links */}
-        <ul className="nav-links">
-          <li><NavLink to="/" onClick={closeMenu}>Home</NavLink></li>
-          <li><NavLink to="/shop" onClick={closeMenu}>Shop</NavLink></li>
-          <li><NavLink to="/categories" onClick={closeMenu}>Categories</NavLink></li>
-          <li><NavLink to="/login" onClick={closeMenu}>Login</NavLink></li>
-          <li><NavLink to="/wishlist" onClick={closeMenu}>Wishlist</NavLink></li>
-          <li><NavLink to="/cart" onClick={closeMenu}>Cart</NavLink></li>
+        {/* Desktop links */}
+        <ul className="nav-links desktop">
+          {links.map((link, i) => (
+            <li key={i}>
+              <NavLink to={link.path}>{link.name}</NavLink>
+            </li>
+          ))}
         </ul>
       </nav>
 
@@ -56,18 +64,19 @@ const Navbar = () => {
         onClick={closeMenu}
       ></div>
 
-      {/* Right-side drawer for mobile */}
+      {/* Mobile Drawer */}
       <div className={`nav-drawer ${menuOpen ? "open" : ""}`}>
-        {/* Close icon inside drawer */}
-        <div className="drawer-close" onClick={closeMenu}>✕</div>
-
+        <div className="drawer-close" onClick={closeMenu}>
+          ✕
+        </div>
         <ul className="nav-links">
-          <li><NavLink to="/" onClick={closeMenu}>Home</NavLink></li>
-          <li><NavLink to="/shop" onClick={closeMenu}>Shop</NavLink></li>
-          <li><NavLink to="/categories" onClick={closeMenu}>Categories</NavLink></li>
-          <li><NavLink to="/login" onClick={closeMenu}>Login</NavLink></li>
-          <li><NavLink to="/wishlist" onClick={closeMenu}>Wishlist</NavLink></li>
-          <li><NavLink to="/cart" onClick={closeMenu}>Cart</NavLink></li>
+          {links.map((link, i) => (
+            <li key={i}>
+              <NavLink to={link.path} onClick={closeMenu}>
+                {link.name}
+              </NavLink>
+            </li>
+          ))}
         </ul>
       </div>
     </>
