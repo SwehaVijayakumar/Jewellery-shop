@@ -3,10 +3,10 @@ import ProductCard from "../components/ProductCard";
 
 const Shop = () => {
   const allProducts = [
-    { name: "Golden Necklace", price: 450, image: "/images/pro1.jpg" },
-    { name: "Traditional Earrings", price: 250, image: "/images/pro2.jpg" },
-    { name: "Temple Haram", price: 999, image: "/images/pro3.jpg" },
-    { name: "Green Beads Chain", price: 350, image: "/images/pro4.jpg" },
+    { name: "Golden Necklace", price: 450, image: "/images/necklace.jpg" },
+    { name: "Traditional Earrings", price: 250, image: "/images/necklace.jpg" },
+    { name: "Temple Haram", price: 999, image: "/images/necklace.jpg" },
+    { name: "Green Beads Chain", price: 350, image: "/images/necklace.jpg" },
   ];
 
   return (

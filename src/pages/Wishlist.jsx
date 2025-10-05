@@ -3,8 +3,8 @@ import ProductCard from "../components/ProductCard";
 
 const Wishlist = () => {
   const wishlistProducts = [
-    { name: "Lakshmi Coin Necklace", price: 550, image: "/images/pro1.jpg" },
-    { name: "Ruby Floral Earrings", price: 199, image: "/images/pro2.jpg" },
+    { name: "Lakshmi Coin Necklace", price: 550, image: "/images/necklace.jpg" },
+    { name: "Ruby Floral Earrings", price: 199, image: "/images/necklace.jpg" },
   ];
 
   return (

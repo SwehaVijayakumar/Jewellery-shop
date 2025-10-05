@@ -3,10 +3,10 @@ import CategoryCard from "../components/CategoryCard";
 
 const Categories = () => {
   const categories = [
-    { title: "Earams", image: "/images/earams.jpg" },
-    { title: "Necklaces", image: "/images/necklaces.jpg" },
-    { title: "Earrings", image: "/images/earrings.jpg" },
-    { title: "Chains", image: "/images/chains.jpg" },
+    { title: "Earams", image: "/images/necklace.jpg" },
+    { title: "Necklaces", image: "/images/necklace.jpg" },
+    { title: "Earrings", image: "/images/necklace.jpg" },
+    { title: "Chains", image: "/images/necklace.jpg" },
   ];
 
   return (
