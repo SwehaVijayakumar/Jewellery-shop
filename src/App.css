@@ -177,3 +177,92 @@ body {
   border: none;
   cursor: pointer;
 }
+/* ===== Global Dark Mode Styles ===== */
+body.dark-mode {
+  background-color: #121212;  /* dark background */
+  color: #fff;               /* default text white */
+  transition: background-color 0.4s, color 0.4s;
+}
+
+/* Text Elements */
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h3,
+body.dark-mode h4,
+body.dark-mode h5,
+body.dark-mode h6,
+body.dark-mode p,
+body.dark-mode span,
+body.dark-mode li,
+body.dark-mode a,
+body.dark-mode label {
+  color: #fff; /* all text white */
+  transition: color 0.3s;
+}
+
+/* Links Hover */
+body.dark-mode a:hover {
+  color: #0b0b0b00; /* light blue hover */
+}
+
+/* Buttons */
+body.dark-mode button {
+  background-color: #ffffff00;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+body.dark-mode button:hover {
+  background-color: #00000000;
+}
+
+/* Inputs, Textareas, Selects */
+body.dark-mode input,
+body.dark-mode textarea,
+body.dark-mode select {
+  background-color: #333;
+  color: #fff;
+  border: 1px solid #555;
+  caret-color: #fff;
+  transition: background-color 0.3s, color 0.3s, border 0.3s;
+}
+
+/* Card or Container Elements */
+body.dark-mode .card,
+body.dark-mode .container,
+body.dark-mode .product-card {
+  background-color: #1e1e1e; /* slightly lighter than body */
+  color: #fff;
+  border: 1px solid #333;
+  transition: background-color 0.3s, color 0.3s, border 0.3s;
+}
+
+/* Navbar & Footer Overrides */
+body.dark-mode .navbar,
+body.dark-mode .footer {
+  background-color: #222;
+  color: #fff;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+body.dark-mode .navbar a,
+body.dark-mode .footer a {
+  color: #fff;
+}
+
+body.dark-mode .navbar a:hover,
+body.dark-mode .footer a:hover {
+  color: #ebecec;
+}
+
+/* Mobile Menu Dark Mode */
+body.dark-mode .nav-links.mobile-open {
+  background-color: #222;
+}
+
+/* Optional: subtle shadow or highlight for cards in dark mode */
+body.dark-mode .card {
+  box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+}

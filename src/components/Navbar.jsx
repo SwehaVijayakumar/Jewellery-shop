@@ -7,9 +7,9 @@ const Navbar = () => {
   const [darkMode, setDarkMode] = useState(false);
 
   const toggleTheme = () => {
-    setDarkMode(!darkMode);
-    document.body.classList.toggle("dark-mode");
-  };
+  setDarkMode(!darkMode);
+  document.body.classList.toggle("dark-mode"); // apply dark-mode class globally
+};
 
   return (
     <nav className={`navbar ${darkMode ? "dark" : ""}`}>
