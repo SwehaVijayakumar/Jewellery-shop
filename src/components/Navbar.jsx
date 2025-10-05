@@ -13,7 +13,7 @@ const Navbar = () => {
 
   return (
     <nav className={`navbar ${darkMode ? "dark" : ""}`}>
-      <h1 className="logo"><NavLink to="/">Varmukil</NavLink></h1>
+      <h1 className="logo"><NavLink to="/">JEWELLERY SHOP</NavLink></h1>
 
       {/* Search Bar */}
       <div className="search-bar">
