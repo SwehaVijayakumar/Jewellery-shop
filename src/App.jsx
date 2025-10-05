@@ -14,6 +14,7 @@ function App() {
   return (
     <Router>
       <Navbar />
+      <Home/>
       <Routes>
         {/* Default Home Route */}
         <Route path="/" element={<Home />} />
@@ -26,7 +27,7 @@ function App() {
         <Route path="/cart" element={<Cart />} />
 
         {/* Redirect unknown URLs to Home */}
-        <Route path="*" element={<Navigate to="/" />} />
+        
       </Routes>
       <Footer />
     </Router>
