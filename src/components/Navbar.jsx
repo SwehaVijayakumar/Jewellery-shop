@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
-
+import "./Navbar.css";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -20,27 +20,57 @@ const Navbar = () => {
     localStorage.setItem("darkMode", !darkMode);
   };
 
+  const toggleMenu = () => setMenuOpen(!menuOpen);
+  const closeMenu = () => setMenuOpen(false);
+
   return (
-    <nav className="navbar">
-      <h1 className="logo">JEWELLERY SHOP</h1>
+    <>
+      {/* Navbar */}
+      <nav className={`navbar ${darkMode ? "dark" : ""}`}>
+        <h1 className="logo">JEWELLERY SHOP</h1>
 
-      <div className="menu-icon" onClick={() => setMenuOpen(!menuOpen)}>☰</div>
+        {/* Right-side controls: Hamburger + Theme toggle */}
+        <div className="nav-controls">
+          <button className="theme-toggle" onClick={toggleTheme}>
+            {darkMode ? "🌙" : "☀️"}
+          </button>
+          <div className="menu-icon" onClick={toggleMenu}>
+            ☰
+          </div>
+        </div>
 
-      <ul className={menuOpen ? "nav-links mobile-open" : "nav-links"}>
-        <li><NavLink to="/">Home</NavLink></li>
-        <li><NavLink to="/shop">Shop</NavLink></li>
-        <li><NavLink to="/categories">Categories</NavLink></li>
-        <li><NavLink to="/login">Login</NavLink></li>
-        <li><NavLink to="/wishlist">Wishlist</NavLink></li>
-        <li><NavLink to="/cart">Cart</NavLink></li>
-      </ul>
+        {/* Desktop nav links */}
+        <ul className="nav-links">
+          <li><NavLink to="/" onClick={closeMenu}>Home</NavLink></li>
+          <li><NavLink to="/shop" onClick={closeMenu}>Shop</NavLink></li>
+          <li><NavLink to="/categories" onClick={closeMenu}>Categories</NavLink></li>
+          <li><NavLink to="/login" onClick={closeMenu}>Login</NavLink></li>
+          <li><NavLink to="/wishlist" onClick={closeMenu}>Wishlist</NavLink></li>
+          <li><NavLink to="/cart" onClick={closeMenu}>Cart</NavLink></li>
+        </ul>
+      </nav>
 
-      <div className="right-icons">
-        <button className="theme-toggle" onClick={toggleTheme}>
-          {darkMode ? "🌙" : "☀️"}
-        </button>
+      {/* Overlay */}
+      <div
+        className={`overlay ${menuOpen ? "active" : ""}`}
+        onClick={closeMenu}
+      ></div>
+
+      {/* Right-side drawer for mobile */}
+      <div className={`nav-drawer ${menuOpen ? "open" : ""}`}>
+        {/* Close icon inside drawer */}
+        <div className="drawer-close" onClick={closeMenu}>✕</div>
+
+        <ul className="nav-links">
+          <li><NavLink to="/" onClick={closeMenu}>Home</NavLink></li>
+          <li><NavLink to="/shop" onClick={closeMenu}>Shop</NavLink></li>
+          <li><NavLink to="/categories" onClick={closeMenu}>Categories</NavLink></li>
+          <li><NavLink to="/login" onClick={closeMenu}>Login</NavLink></li>
+          <li><NavLink to="/wishlist" onClick={closeMenu}>Wishlist</NavLink></li>
+          <li><NavLink to="/cart" onClick={closeMenu}>Cart</NavLink></li>
+        </ul>
       </div>
-    </nav>
+    </>
   );
 };
 
