@@ -1,48 +1,44 @@
 import React, { useState } from "react";
+import { NavLink } from "react-router-dom";
 import "./Navbar.css";
-import { useCart } from "../context/CartContext"; // import context
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
-  const { cartItems } = useCart(); // get cart state
+  const [darkMode, setDarkMode] = useState(false);
+
+  const toggleTheme = () => {
+    setDarkMode(!darkMode);
+    document.body.classList.toggle("dark-mode");
+  };
 
   return (
-    <nav className="navbar">
-      {/* Logo */}
-      <div className="logo">
-        <h1>Jewelry</h1>
+    <nav className={`navbar ${darkMode ? "dark" : ""}`}>
+      <h1 className="logo"><NavLink to="/">Varmukil</NavLink></h1>
+
+      {/* Search Bar */}
+      <div className="search-bar">
+        <input type="text" placeholder="Search products..." />
+        <button>🔍</button>
       </div>
 
-      {/* Nav Links (desktop) */}
-      <ul className="nav-links desktop">
-        <li>Home</li>
-        <li>Shop</li>
-        <li>Categories</li>
-        <li>Login</li>
-        <li>Wishlist</li>
+      {/* Hamburger Icon */}
+      <div className="menu-icon" onClick={() => setMenuOpen(!menuOpen)}>☰</div>
+
+      {/* Nav Links */}
+      <ul className={menuOpen ? "nav-links mobile-open" : "nav-links"}>
+        <li><NavLink to="/" onClick={() => setMenuOpen(false)}>Home</NavLink></li>
+        <li><NavLink to="/shop" onClick={() => setMenuOpen(false)}>Shop</NavLink></li>
+        <li><NavLink to="/categories" onClick={() => setMenuOpen(false)}>Categories</NavLink></li>
+        <li><NavLink to="/login" onClick={() => setMenuOpen(false)}>Login</NavLink></li>
+        <li><NavLink to="/wishlist" onClick={() => setMenuOpen(false)}>Wishlist</NavLink></li>
       </ul>
 
-      {/* Cart + Hamburger */}
+      {/* Right Side Icons */}
       <div className="right-icons">
-        <div className="cart-wrapper">
-          {/* <div className="cart-icon">🛒</div> */}
-          {cartItems.length > 0 && (
-            <span className="cart-badge">{cartItems.length}</span>
-          )}
-        </div>
-        <div className="hamburger" onClick={() => setMenuOpen(true)}>☰</div>
-      </div>
-
-      {/* Sidebar (mobile) */}
-      <div className={`sidebar ${menuOpen ? "show" : ""}`}>
-        <span className="close-btn" onClick={() => setMenuOpen(false)}>✖</span>
-        <ul>
-          <li onClick={() => setMenuOpen(false)}>Home</li>
-          <li onClick={() => setMenuOpen(false)}>Shop</li>
-          <li onClick={() => setMenuOpen(false)}>Categories</li>
-          <li onClick={() => setMenuOpen(false)}>Login</li>
-          <li onClick={() => setMenuOpen(false)}>Wishlist</li>
-        </ul>
+        <NavLink to="/cart">🛒</NavLink>
+        <button className="theme-toggle" onClick={toggleTheme}>
+          {darkMode ? "🌙" : "☀️"}
+        </button>
       </div>
     </nav>
   );
