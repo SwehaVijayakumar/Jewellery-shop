@@ -15,9 +15,10 @@ const Navbar = () => {
   }, []);
 
   const toggleTheme = () => {
-    setDarkMode(!darkMode);
+    const newTheme = !darkMode;
+    setDarkMode(newTheme);
     document.body.classList.toggle("dark-mode");
-    localStorage.setItem("darkMode", !darkMode);
+    localStorage.setItem("darkMode", newTheme);
   };
 
   const toggleMenu = () => setMenuOpen(!menuOpen);
@@ -34,21 +35,10 @@ const Navbar = () => {
 
   return (
     <>
-      {/* Navbar */}
       <nav className="navbar">
-        <h1 className="logo">JEWELLERY SHOP</h1>
+        <div className="logo">JEWELLERY SHOP</div>
 
-        {/* Right controls */}
-        <div className="nav-controls">
-          <button className="theme-toggle" onClick={toggleTheme}>
-            {darkMode ? "🌙" : "☀️"}
-          </button>
-          <div className="menu-icon" onClick={toggleMenu}>
-            ☰
-          </div>
-        </div>
-
-        {/* Desktop links */}
+        {/* Desktop Links */}
         <ul className="nav-links desktop">
           {links.map((link, i) => (
             <li key={i}>
@@ -56,29 +46,37 @@ const Navbar = () => {
             </li>
           ))}
         </ul>
+
+        {/* Controls */}
+        <div className="nav-controls">
+          <button className="theme-toggle" onClick={toggleTheme}>
+            {darkMode ? "☀️" : "🌙"}
+          </button>
+          <div className="menu-icon" onClick={toggleMenu}>
+            ☰
+          </div>
+        </div>
       </nav>
+
+      {/* Mobile Drawer */}
+      <ul className={`nav-links mobile ${menuOpen ? "open" : ""}`}>
+        <div className="drawer-close" onClick={closeMenu}>
+          ✕
+        </div>
+        {links.map((link, i) => (
+          <li key={i}>
+            <NavLink to={link.path} onClick={closeMenu}>
+              {link.name}
+            </NavLink>
+          </li>
+        ))}
+      </ul>
 
       {/* Overlay */}
       <div
         className={`overlay ${menuOpen ? "active" : ""}`}
         onClick={closeMenu}
       ></div>
-
-      {/* Mobile Drawer */}
-      <div className={`nav-drawer ${menuOpen ? "open" : ""}`}>
-        <div className="drawer-close" onClick={closeMenu}>
-          ✕
-        </div>
-        <ul className="nav-links">
-          {links.map((link, i) => (
-            <li key={i}>
-              <NavLink to={link.path} onClick={closeMenu}>
-                {link.name}
-              </NavLink>
-            </li>
-          ))}
-        </ul>
-      </div>
     </>
   );
 };
