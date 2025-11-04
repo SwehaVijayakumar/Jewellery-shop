@@ -2,6 +2,7 @@
   "name": "jewellery-shop",
   "version": "1.0.0",
   "private": true,
+  "homepage": "https://sweha-vijayakumar.github.io/jewellery-shop",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
