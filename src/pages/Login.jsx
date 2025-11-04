@@ -1,71 +1,57 @@
 import React, { useState } from "react";
-import "./Login.css";
+import { Link } from "react-router-dom";
+import SparkleBackground from "../components/SparkleBackground";
+import "./Auth.css";
 
 const Login = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [formData, setFormData] = useState({ email: "", password: "" });
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Email:", email, "Password:", password);
+    alert("Login successful!");
   };
 
   return (
-    <div className="login-page">
-      <div className="background-shimmer"></div>
+    <div className="auth-container">
+      <SparkleBackground />
+      <div className="auth-card">
+        <h2 className="auth-title">Welcome Back</h2>
+        <p className="auth-subtitle">Login to continue your sparkle ✨</p>
 
-      <div className="login-container">
-        <div className="login-left">
-          <h1 className="brand">Vinuriya Jewels</h1>
-          <p className="slogan">Where Elegance Meets Perfection ✨</p>
-        </div>
+        <form onSubmit={handleSubmit}>
+          <div className="input-group">
+            <input
+              type="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              required
+            />
+            <label>Email Address</label>
+          </div>
 
-        <div className="login-right">
-          <form className="login-form" onSubmit={handleSubmit}>
-            <h2>Welcome Back</h2>
-            <p>Login to continue exploring timeless beauty.</p>
+          <div className="input-group">
+            <input
+              type="password"
+              name="password"
+              value={formData.password}
+              onChange={handleChange}
+              required
+            />
+            <label>Password</label>
+          </div>
 
-            <div className="input-group">
-              <label>Email</label>
-              <input
-                type="email"
-                placeholder="Enter your email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-              />
-            </div>
+          <button type="submit" className="auth-btn">Login</button>
+        </form>
 
-            <div className="input-group">
-              <label>Password</label>
-              <input
-                type="password"
-                placeholder="Enter your password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-              />
-            </div>
-
-            <div className="actions">
-              <button type="submit" className="login-btn">Login</button>
-              <a href="#" className="forgot-link">Forgot password?</a>
-            </div>
-
-            <div className="divider">
-              <span>or continue with</span>
-            </div>
-
-            <div className="social-login">
-              <button className="google-btn">Google</button>
-              <button className="facebook-btn">Facebook</button>
-            </div>
-
-            <p className="signup-text">
-              Don’t have an account? <a href="/register">Sign up</a>
-            </p>
-          </form>
-        </div>
+        <p className="auth-footer">
+          Don’t have an account?{" "}
+          <Link to="/register" className="auth-link">Sign Up</Link>
+        </p>
       </div>
     </div>
   );
