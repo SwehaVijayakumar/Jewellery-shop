@@ -28,7 +28,15 @@ const Login = () => {
         <h2 className="auth-title">Welcome Back</h2>
         <p className="auth-subtitle">Login to continue your sparkle ✨</p>
 
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} autoComplete="off">
+          {/* hidden dummy input to fully disable browser autofill */}
+          <input
+            type="text"
+            name="hidden"
+            autoComplete="off"
+            style={{ display: "none" }}
+          />
+
           <div className="input-group">
             <input
               type="email"
@@ -36,6 +44,7 @@ const Login = () => {
               value={formData.email}
               onChange={handleChange}
               required
+              autoComplete="off"
             />
             <label>Email Address</label>
           </div>
@@ -47,6 +56,7 @@ const Login = () => {
               value={formData.password}
               onChange={handleChange}
               required
+              autoComplete="new-password"
             />
             <label>Password</label>
           </div>
