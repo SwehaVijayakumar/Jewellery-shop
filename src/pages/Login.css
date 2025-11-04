@@ -13,7 +13,7 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(-45deg, #f9f3e4, #e8cf9d, #d4af37, #fff7e1);
+  background: linear-gradient(-45deg, #f9f3e4, #e07772, #c6472b, #d16c5f);
   background-size: 400% 400%;
   animation: shimmerMove 10s ease infinite;
   z-index: -1;
@@ -53,7 +53,7 @@ body {
 /* ===== Left Panel ===== */
 .login-left {
   flex: 1;
-  background: rgba(184, 134, 11, 0.85);
+  background: rgba(215, 14, 14, 0.893);
   color: #fff;
   padding: 3rem 2rem;
   display: flex;
@@ -90,7 +90,7 @@ body {
 }
 
 .login-form h2 {
-  color: #b8860b;
+  color: #820505;
   font-weight: 700;
 }
 
@@ -114,7 +114,7 @@ body {
 }
 
 .input-group input:focus {
-  border-color: #b8860b;
+  border-color: #0eb80b;
   box-shadow: 0 0 8px rgba(184, 134, 11, 0.4);
 }
 
@@ -126,7 +126,7 @@ body {
 }
 
 .login-btn {
-  background: linear-gradient(135deg, #b8860b, #e4c580);
+  background: linear-gradient(135deg, #881f0f, #c56c69e4);
   border: none;
   padding: 0.8rem 2rem;
   border-radius: 30px;
@@ -142,7 +142,7 @@ body {
 }
 
 .forgot-link {
-  color: #b8860b;
+  color: #f41313;
   text-decoration: none;
   font-size: 0.9rem;
 }
@@ -215,7 +215,7 @@ body {
 }
 
 .signup-text a {
-  color: #b8860b;
+  color: #b82b0b;
   text-decoration: none;
   font-weight: 500;
 }

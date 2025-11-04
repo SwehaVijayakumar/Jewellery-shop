@@ -9,9 +9,22 @@ import Login from "./pages/Login";
 import Wishlist from "./pages/Wishlist";
 import Cart from "./pages/Cart";
 import "./App.css";
+import Signup from "./pages/Signup";
+import Preloader from "./components/Preloader";
+
 
 function App() {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setLoading(false), 3000); // 3 seconds preloader
+    return () => clearTimeout(timer);
+  }, []);
   return (
+    <>
+      {loading ? (
+        <Preloader />
+      ) : (
     <Router>
       <Navbar />
       <Routes>
@@ -21,6 +34,7 @@ function App() {
         <Route path="/shop" element={<Shop />} />
         <Route path="/categories" element={<Categories />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Signup />} />
         <Route path="/wishlist" element={<Wishlist />} />
         <Route path="/cart" element={<Cart />} />
 
@@ -29,6 +43,8 @@ function App() {
       </Routes>
       <Footer />
     </Router>
+    )}
+    </>
   );
 }
 
