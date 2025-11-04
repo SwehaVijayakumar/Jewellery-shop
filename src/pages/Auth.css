@@ -1,140 +1,471 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap");
-
-body {
+/* ===== Reset & Base ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
   font-family: "Poppins", sans-serif;
-  background: linear-gradient(135deg, #fff8e1, #f3e5ab);
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
-.auth-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  padding: 20px;
-}
-
-.auth-card {
-  background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(15px);
-  border-radius: 20px;
-  border: 1px solid rgba(255, 215, 0, 0.4);
-  padding: 40px 30px;
-  max-width: 400px;
+html, body {
   width: 100%;
-  box-shadow: 0 0 30px rgba(212, 175, 55, 0.3);
-  animation: fadeInUp 0.9s ease-in-out;
+  height: 100%;
+  overflow: hidden;
+  background: linear-gradient(135deg, #ffffff 0%, #f8e9ec 100%);
 }
 
+/* ===== Auth Container ===== */
+.auth-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* ===== Glassmorphic Auth Card ===== */
+.auth-card {
+  position: relative;
+  width: 400px;
+  padding: 2.5rem;
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 20px;
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 0 0 50px rgba(128, 0, 32, 0.3);
+  z-index: 10;
+  animation: fadeUp 1.2s ease-out;
+}
+
+/* ===== Title & Subtitle ===== */
 .auth-title {
-  font-size: 1.8rem;
-  font-weight: 600;
   text-align: center;
-  color: #b8860b;
-  margin-bottom: 5px;
+  font-size: 1.9rem;
+  color: #e19106;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
 }
 
 .auth-subtitle {
   text-align: center;
-  color: #444;
-  font-size: 0.9rem;
-  margin-bottom: 30px;
+  font-size: 0.95rem;
+  color: #555;
+  margin-bottom: 2rem;
 }
 
-/* Input Group */
+/* ===== Input Groups ===== */
 .input-group {
   position: relative;
-  margin-bottom: 25px;
+  margin-bottom: 1.6rem;
 }
 
 .input-group input {
   width: 100%;
-  padding: 12px;
-  border: none;
-  border-bottom: 2px solid #d4af37;
+  padding: 12px 10px;
   background: transparent;
-  color: #333;
+  border: none;
+  border-bottom: 2px solid rgba(128, 0, 32, 0.4);
+  color: #800020;
   font-size: 1rem;
   outline: none;
-  transition: 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+.input-group input:focus {
+  border-color: #800020;
 }
 
 .input-group label {
   position: absolute;
-  left: 10px;
   top: 12px;
-  color: #777;
+  left: 10px;
+  color: #666;
   font-size: 0.95rem;
   pointer-events: none;
   transition: 0.3s ease;
 }
 
-.input-group input:focus ~ label,
-.input-group input:valid ~ label {
+.input-group input:focus + label,
+.input-group input:valid + label {
   top: -10px;
-  left: 0;
-  color: #b8860b;
+  left: 5px;
   font-size: 0.8rem;
+  color: #bf8f28;
+  font-weight: 500;
 }
 
-/* Button */
+/* ===== Button ===== */
 .auth-btn {
   width: 100%;
-  padding: 12px;
+  padding: 12px 0;
   border: none;
-  border-radius: 30px;
-  background: linear-gradient(135deg, #d4af37, #f0e68c);
+  border-radius: 25px;
+  background: linear-gradient(135deg, #a8324a, #800020);
   color: #fff;
+  font-weight: 600;
   font-size: 1rem;
   cursor: pointer;
-  font-weight: 600;
-  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(128, 0, 32, 0.4);
+  transition: 0.3s ease;
 }
 
 .auth-btn:hover {
-  transform: translateY(-3px);
-  background: linear-gradient(135deg, #c5a028, #f8d560);
-  box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(128, 0, 32, 0.5);
 }
 
-/* Footer */
+/* ===== Footer ===== */
 .auth-footer {
+  margin-top: 1.5rem;
   text-align: center;
-  margin-top: 20px;
+  color: #333;
   font-size: 0.9rem;
-  color: #444;
 }
 
 .auth-link {
-  color: #b8860b;
-  font-weight: 600;
+  color: #800020;
+  font-weight: 500;
   text-decoration: none;
+  transition: 0.3s;
 }
 
 .auth-link:hover {
   text-decoration: underline;
 }
 
-/* Animation */
-@keyframes fadeInUp {
-  0% {
+/* ===== Floating Sparkles ===== */
+.sparkle-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.sparkle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: radial-gradient(circle, #ffd700 40%, transparent 70%);
+  border-radius: 50%;
+  opacity: 0.7;
+  animation: floatSparkle 8s linear infinite;
+}
+
+/* ===== Vinuriya Floating Logo ===== */
+.vinuriya-logo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(0deg);
+  font-size: 10rem;
+  font-weight: 700;
+  color: #800020;
+  text-shadow:
+    0 0 20px rgba(128, 0, 32, 0.6),
+    0 0 40px rgba(255, 215, 0, 0.5),
+    0 0 60px rgba(255, 255, 255, 0.2);
+  animation: rotateGlow 18s linear infinite;
+  opacity: 0.15;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.vinuriya-logo::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -50%;
+  width: 200%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255, 215, 0, 0.6),
+    transparent
+  );
+  animation: shimmer 6s linear infinite;
+}
+
+/* ===== Animations ===== */
+@keyframes fadeUp {
+  from {
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateY(50px);
   }
-  100% {
+  to {
     opacity: 1;
     transform: translateY(0);
   }
 }
 
-/* Responsive */
-@media (max-width: 480px) {
-  .auth-card {
-    padding: 30px 20px;
+@keyframes floatSparkle {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 0.6;
   }
+  50% {
+    opacity: 1;
+    transform: translateY(-100px) scale(1.2);
+  }
+  100% {
+    transform: translateY(-200px) scale(1);
+    opacity: 0;
+  }
+}
+
+@keyframes rotateGlow {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg) scale(1);
+  }
+  50% {
+    transform: translate(-50%, -50%) rotate(180deg) scale(1.05);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg) scale(1);
+  }
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%) rotate(0deg); }
+  100% { transform: translateX(100%) rotate(360deg); }
+}
+
+/* ===== Responsive Design ===== */
+@media (max-width: 768px) {
+  .auth-card {
+    width: 85%;
+    padding: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .auth-title {
+    font-size: 1.6rem;
+  }
+  .auth-subtitle {
+    font-size: 0.9rem;
+  }
+  .auth-btn {
+    font-size: 0.9rem;
+  }
+}
+/* ===== Global Auth Page Styles ===== */
+.auth-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  overflow: hidden;
+  background: radial-gradient(circle at top left, #800020, #2a000a 60%);
+  color: #fff;
+}
+
+/* ===== Sparkle Background ===== */
+.sparkle-bg {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.sparkle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: rgba(255, 215, 0, 0.9);
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.7);
+  animation: floatSparkle linear infinite;
+}
+
+@keyframes floatSparkle {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-800px) scale(0);
+    opacity: 0;
+  }
+}
+
+/* ===== Floating Vinuriya "V" Logo ===== */
+.vinuriya-logo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(0deg);
+  font-size: 10rem;
+  font-weight: 700;
+  color: #fff;
+  text-shadow:
+    0 0 25px rgba(255, 215, 0, 0.5),
+    0 0 45px rgba(128, 0, 32, 0.6);
+  animation: rotateGlow 18s linear infinite;
+  opacity: 0.12;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.vinuriya-logo::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -50%;
+  width: 200%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255, 215, 0, 0.6),
+    transparent
+  );
+  animation: shimmer 6s linear infinite;
+}
+
+@keyframes rotateGlow {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* ===== Auth Card ===== */
+.auth-card {
+  position: relative;
+  z-index: 10;
+  width: 90%;
+  max-width: 400px;
+  padding: 2.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 1.2rem;
+  backdrop-filter: blur(20px);
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.05);
+  text-align: center;
+  animation: fadeInCard 1.2s ease forwards;
+}
+
+@keyframes fadeInCard {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===== Form Elements ===== */
+.input-group {
+  position: relative;
+  margin: 1.5rem 0;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 0.9rem;
+  border: none;
+  border-bottom: 2px solid #fff;
+  background: transparent;
+  color: #fff;
+  outline: none;
+  font-size: 1rem;
+}
+
+.input-group label {
+  position: absolute;
+  left: 0;
+  top: 0.9rem;
+  color: #fff;
+  font-size: 1rem;
+  pointer-events: none;
+  transition: 0.3s;
+}
+
+.input-group input:focus + label,
+.input-group input:valid + label {
+  top: -0.6rem;
+  font-size: 0.8rem;
+  color: #ffd700;
+}
+
+/* ===== Buttons ===== */
+.auth-btn {
+  width: 100%;
+  padding: 0.9rem;
+  border: none;
+  border-radius: 25px;
+  background: linear-gradient(90deg, #800020, #b22222);
+  color: #fff;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+.auth-btn:hover {
+  background: linear-gradient(90deg, #b22222, #800020);
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
+}
+
+/* ===== Text Elements ===== */
+.auth-title {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+}
+
+.auth-subtitle {
+  color: #f7caca;
+  margin-bottom: 2rem;
+}
+
+.auth-footer {
+  margin-top: 1.5rem;
+  font-size: 0.9rem;
+  color: #ddd;
+}
+
+.auth-link {
+  color: #ffd700;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.auth-link:hover {
+  color: #fff;
+}
+
+/* ===== Responsive Design ===== */
+@media (max-width: 600px) {
+  .vinuriya-logo {
+    font-size: 6rem;
+  }
+
+  .auth-card {
+    padding: 1.8rem;
+  }
+
   .auth-title {
     font-size: 1.5rem;
   }

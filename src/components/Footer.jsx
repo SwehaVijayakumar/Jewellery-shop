@@ -4,7 +4,7 @@ import "./Footer.css";
 const Footer = () => {
   return (
     <footer>
-      <p>&copy; 2025 Varmukil. All rights reserved.</p>
+      <p>&copy; 2025 Vinuriya. All rights reserved.</p>
     </footer>
   );
 };

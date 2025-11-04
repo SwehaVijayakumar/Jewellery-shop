@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import SparkleBackground from "../components/SparkleBackground";
 import "./Auth.css";
+import { motion } from "framer-motion";
 
 const Login = () => {
   const [formData, setFormData] = useState({ email: "", password: "" });
@@ -18,7 +19,12 @@ const Login = () => {
   return (
     <div className="auth-container">
       <SparkleBackground />
-      <div className="auth-card">
+      <motion.div
+        className="auth-card"
+        initial={{ opacity: 0, y: 40 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7 }}
+      >
         <h2 className="auth-title">Welcome Back</h2>
         <p className="auth-subtitle">Login to continue your sparkle ✨</p>
 
@@ -45,14 +51,18 @@ const Login = () => {
             <label>Password</label>
           </div>
 
-          <button type="submit" className="auth-btn">Login</button>
+          <button type="submit" className="auth-btn">
+            Login
+          </button>
         </form>
 
         <p className="auth-footer">
           Don’t have an account?{" "}
-          <Link to="/register" className="auth-link">Sign Up</Link>
+          <Link to="/register" className="auth-link">
+            Sign Up
+          </Link>
         </p>
-      </div>
+      </motion.div>
     </div>
   );
 };
