@@ -13,10 +13,11 @@ import Footer from "./components/Footer";
 import Home from "./pages/Home";
 import Shop from "./pages/Shop";
 import Categories from "./pages/Categories";
-import Login from "./pages/Login";
-import Signup from "./pages/Signup";
 import Wishlist from "./pages/Wishlist";
 import Cart from "./pages/Cart";
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
+import ForgotPassword from "./pages/ForgotPassword";
 
 import "./App.css";
 
@@ -64,22 +65,6 @@ const AnimatedRoutes = () => {
           }
         />
         <Route
-          path="/login"
-          element={
-            <PageWrapper>
-              <Login />
-            </PageWrapper>
-          }
-        />
-        <Route
-          path="/register"
-          element={
-            <PageWrapper>
-              <Signup />
-            </PageWrapper>
-          }
-        />
-        <Route
           path="/wishlist"
           element={
             <PageWrapper>
@@ -95,6 +80,33 @@ const AnimatedRoutes = () => {
             </PageWrapper>
           }
         />
+
+        {/* UPDATED AUTH ROUTES */}
+        <Route
+          path="/login"
+          element={
+            <PageWrapper>
+              <Login />
+            </PageWrapper>
+          }
+        />
+        <Route
+          path="/signup"
+          element={
+            <PageWrapper>
+              <Signup />
+            </PageWrapper>
+          }
+        />
+        <Route
+          path="/forgot-password"
+          element={
+            <PageWrapper>
+              <ForgotPassword />
+            </PageWrapper>
+          }
+        />
+
         {/* Redirect unknown paths */}
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
@@ -102,7 +114,7 @@ const AnimatedRoutes = () => {
   );
 };
 
-function App() {
+export default function App() {
   return (
     <Router>
       <Navbar />
@@ -111,5 +123,3 @@ function App() {
     </Router>
   );
 }
-
-export default App;
