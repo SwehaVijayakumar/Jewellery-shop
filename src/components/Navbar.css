@@ -326,3 +326,51 @@ body.dark-mode .icon-btn { color: #cfd3d6; }
   .mobile-bottom-nav { display: none; }
   .logo-dark { display: none; } /* keep logo compact */
 }
+/* ========= MOBILE RESPONSIVE FIX ========= */
+@media (max-width: 768px) {
+  
+  /* Hide desktop navigation completely */
+  .nav-center,
+  .search-inline {
+    display: none !important;
+  }
+
+  /* Reduce spacing of right icons */
+  .nav-controls {
+    gap: 10px;
+  }
+
+  /* Prevent double icons on both left & right */
+  .right-icons,
+  .nav-controls button.icon-btn {
+    font-size: 1.2rem;
+  }
+
+  /* Make sure navbar content fits */
+  .navbar {
+    padding: 10px 12px;
+  }
+
+  /* Prevent overflow width issue */
+  body {
+    overflow-x: hidden;
+  }
+}
+
+/* Fixed Home Banner Width on Mobile */
+@media (max-width: 768px) {
+  .video-banner {
+    width: 100%;
+    height: 45vh;
+    border-radius: 8px;
+  }
+}
+
+/* Fix Category Card responsiveness */
+@media (max-width: 480px) {
+  .category-card,
+  .product-card {
+    max-width: 90% !important;
+    margin: 10px auto;
+  }
+}
