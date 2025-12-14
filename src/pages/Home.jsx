@@ -1,5 +1,6 @@
 // src/pages/Home.jsx
 import React from "react";
+import { Link } from "react-router-dom";
 import CategoryCard from "../components/CategoryCard";
 import ProductCard from "../components/ProductCard";
 import "../App.css";
@@ -17,12 +18,12 @@ const Home = () => {
   const products = [
     { name: "Favorite Oxider Mixed", price: 250, image: base + "images/necklace.jpg" },
     { name: "Navapriya Cute Oxider Box", price: 300, image: base + "images/necklace.jpg", sale: true },
-    { name: "Cute Necklace with white Beads", price: 350, image: base + "images/necklace.jpg" },
+    { name: "Cute Necklace with White Beads", price: 350, image: base + "images/necklace.jpg" },
   ];
 
   return (
-    <div>
-      {/* Video Banner with Overlay */}
+    <main className="home-container">
+      {/* ================= VIDEO BANNER ================= */}
       <section className="video-banner">
         <video
           src={base + "videos/chain.mp4"}
@@ -35,13 +36,18 @@ const Home = () => {
         <div className="video-overlay">
           <h1>Welcome to Jewellery Shop</h1>
           <p>Explore Our Latest Collections</p>
-          <a href="categories" className="shop-now-btn">Shop Now</a>
+
+          {/* ✅ FIX: use Link instead of <a> */}
+          <Link to="/categories" className="shop-now-btn">
+            Shop Now
+          </Link>
         </div>
       </section>
 
-      {/* Categories */}
-      <section id="categories" className="categories">
-        <h2>Shop By Category</h2>
+      {/* ================= CATEGORIES ================= */}
+      <section className="categories-section">
+        <h2 className="section-title">Shop By Category</h2>
+
         <div className="category-list">
           {categories.map((cat, idx) => (
             <CategoryCard key={idx} {...cat} />
@@ -49,16 +55,17 @@ const Home = () => {
         </div>
       </section>
 
-      {/* New Arrivals */}
-      <section className="new-arrivals">
-        <h2>New Arrivals</h2>
+      {/* ================= NEW ARRIVALS ================= */}
+      <section className="products-section">
+        <h2 className="section-title">New Arrivals</h2>
+
         <div className="product-list">
           {products.map((prod, idx) => (
             <ProductCard key={idx} {...prod} />
           ))}
         </div>
       </section>
-    </div>
+    </main>
   );
 };
 
