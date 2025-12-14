@@ -10,9 +10,8 @@ const base = import.meta.env.BASE_URL;
 const Home = () => {
   const categories = [
     { title: "Earams", image: base + "images/necklace.jpg" },
-    { title: "Necklaces", image: base + "images/necklace.jpg" },
-    { title: "Earrings", image: base + "images/necklace.jpg" },
-    { title: "Chains", image: base + "images/necklace.jpg" },
+  
+    
   ];
 
   const products = [

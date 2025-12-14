@@ -21,7 +21,7 @@ import ForgotPassword from "./pages/ForgotPassword";
 
 import "./App.css";
 
-// Smooth animation for each page
+/* Page animation wrapper */
 const PageWrapper = ({ children }) => (
   <motion.div
     initial={{ opacity: 0, y: 40 }}
@@ -48,6 +48,7 @@ const AnimatedRoutes = () => {
             </PageWrapper>
           }
         />
+
         <Route
           path="/shop"
           element={
@@ -56,6 +57,7 @@ const AnimatedRoutes = () => {
             </PageWrapper>
           }
         />
+
         <Route
           path="/categories"
           element={
@@ -64,6 +66,17 @@ const AnimatedRoutes = () => {
             </PageWrapper>
           }
         />
+
+        {/* ✅ Dynamic category route (from CategoryCard click) */}
+        <Route
+          path="/category/:type"
+          element={
+            <PageWrapper>
+              <Categories />
+            </PageWrapper>
+          }
+        />
+
         <Route
           path="/wishlist"
           element={
@@ -72,6 +85,7 @@ const AnimatedRoutes = () => {
             </PageWrapper>
           }
         />
+
         <Route
           path="/cart"
           element={
@@ -81,7 +95,7 @@ const AnimatedRoutes = () => {
           }
         />
 
-        {/* UPDATED AUTH ROUTES */}
+        {/* Auth routes */}
         <Route
           path="/login"
           element={
@@ -90,6 +104,7 @@ const AnimatedRoutes = () => {
             </PageWrapper>
           }
         />
+
         <Route
           path="/signup"
           element={
@@ -98,6 +113,7 @@ const AnimatedRoutes = () => {
             </PageWrapper>
           }
         />
+
         <Route
           path="/forgot-password"
           element={
@@ -116,7 +132,7 @@ const AnimatedRoutes = () => {
 
 export default function App() {
   return (
-    <Router>
+    <Router basename="/Jewellery-shop">
       <Navbar />
       <AnimatedRoutes />
       <Footer />

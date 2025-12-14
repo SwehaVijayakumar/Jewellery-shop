@@ -1,42 +1,24 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+import categories from "../data/categories";
 import "./CategoryCard.css";
 
-const CategorySection = () => {
-  const navigate = useNavigate();
-
-  const categories = [
-    {
-      name: "Necklaces",
-      image: "/images/necklace.jpg",
-      link: "/categories/necklaces",
-    },
-    {
-      name: "Earrings",
-      image: "/images/earrings.jpg",
-      link: "/categories/earrings",
-    },
-  ];
-
+function CategoryCard() {
   return (
     <section className="category-section">
-      {categories.map((cat, index) => (
-        <div className="category-card" key={index}>
-          <img src={cat.image} alt={cat.name} />
-
-          {/* Overlay */}
+      {categories.map((cat) => (
+        <Link
+          to={cat.link}
+          className="category-card fade-in"
+          key={cat.id}
+        >
+          <img src={cat.image} alt={cat.title} />
           <div className="category-overlay">
-            <button
-              className="category-title"
-              onClick={() => navigate(cat.link)}
-            >
-              {cat.name}
-            </button>
+            <h2>{cat.title}</h2>
           </div>
-        </div>
+        </Link>
       ))}
     </section>
   );
-};
+}
 
 export default CategoryCard;
