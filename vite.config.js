@@ -1,7 +1,7 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
 
 export default defineConfig({
-  base: "/Jewellery-shop/",
   plugins: [react()],
-})
+  base: "/Jewellery-shop/", // 👈 EXACT GitHub repo name
+});
