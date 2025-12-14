@@ -196,3 +196,33 @@ body.dark-mode .drawer-theme-icon {
   border-color: #555;
   color: #fff;
 }
+.navbar-left {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* space between hamburger & logo */
+}
+
+/* Mobile only */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 10px 14px;
+  }
+
+  .menu-toggle {
+    font-size: 22px;
+  }
+
+  .navbar-left {
+    flex: 1;
+    justify-content: flex-start; /* ⬅️ force left alignment */
+  }
+
+  .navbar-left .site-logo {
+    height: 38px; /* perfect mobile size */
+  }
+}
+.logo-link {
+  margin-left: 4px;
+  width: 70px;
+  height: 50px;
+}

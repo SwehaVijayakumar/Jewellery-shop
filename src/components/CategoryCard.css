@@ -26,14 +26,14 @@
 .category-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(255, 255, 255, 0);
+  background: rgba(0, 0, 0, 0.234);
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .category-overlay h2 {
-  color: #fff;
+  color: #ffe1b7;
   font-size: 38px;
   font-family: "Playfair Display", serif;
   letter-spacing: 2px;

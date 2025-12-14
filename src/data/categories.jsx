@@ -1,13 +1,13 @@
 const categories = [
   {
     id: 1,
-    title: "Cotton Sarees",
+    title: "Necklaces",
     image: "images/necklace.jpg",
     link: "/category/cotton",
   },
   {
     id: 2,
-    title: "Tissue Sarees",
+    title: "Earings",
     image: "images/necklace.jpg",
     link: "/category/tissue",
   },

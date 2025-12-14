@@ -6,6 +6,7 @@ import {
   FaPinterestP,
   FaYoutube,
 } from "react-icons/fa";
+import Logo from "./Logo";
 import "./Footer.css";
 
 const Footer = () => {
@@ -14,14 +15,13 @@ const Footer = () => {
       <div className="footer-container">
 
         {/* BRAND */}
-        <div className="footer-col">
-          <h2 className="footer-logo">
-            <span className="logo-gold">JEWELLERY</span> SHOP
-          </h2>
+        <div className="footer-col footer-brand">
+          {/* ✅ LOGO INSTEAD OF TEXT */}
+          <Logo />
 
           <p className="footer-text">
-            Jewellery Shop is all about elegant designs and premium collections.
-            Your one-stop destination for timeless beauty.
+            Vinuriya Jewellery is all about elegant designs and premium
+            collections. Your one-stop destination for timeless beauty.
           </p>
 
           <p className="footer-contact">
@@ -54,8 +54,14 @@ const Footer = () => {
         <div className="footer-col">
           <h3>We Accept</h3>
           <div className="payment-icons">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/4/41/Visa_Logo.png" alt="Visa" />
-            <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" alt="Mastercard" />
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/4/41/Visa_Logo.png"
+              alt="Visa"
+            />
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg"
+              alt="Mastercard"
+            />
           </div>
           <small>Debit & Credit</small>
         </div>
@@ -76,7 +82,7 @@ const Footer = () => {
       </div>
 
       <div className="footer-bottom">
-        © {new Date().getFullYear()} Jewellery Shop. All rights reserved.
+        © {new Date().getFullYear()} Vinuriya Jewellery. All rights reserved.
       </div>
     </footer>
   );

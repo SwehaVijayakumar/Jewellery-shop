@@ -12,6 +12,7 @@ import {
   FiShoppingCart,
   FiUser,
 } from "react-icons/fi";
+import Logo from "./Logo";
 import "./Navbar.css";
 
 const Navbar = () => {
@@ -19,14 +20,27 @@ const Navbar = () => {
   const [darkMode, setDarkMode] = useState(
     localStorage.getItem("darkMode") === "true"
   );
+  const [scrolled, setScrolled] = useState(false);
+
   const navigate = useNavigate();
   const drawerRef = useRef(null);
 
+  /* ===== Dark mode ===== */
   useEffect(() => {
     document.body.classList.toggle("dark-mode", darkMode);
     localStorage.setItem("darkMode", darkMode);
   }, [darkMode]);
 
+  /* ===== Scroll shrink ===== */
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  /* ===== Close drawer on outside click ===== */
   useEffect(() => {
     const close = (e) => {
       if (drawerRef.current && !drawerRef.current.contains(e.target)) {
@@ -47,17 +61,16 @@ const Navbar = () => {
 
   return (
     <>
-      <header className="navbar">
+      {/* ================= NAVBAR ================= */}
+      <header className={`navbar ${scrolled ? "scrolled" : ""}`}>
         <div className="navbar-left">
-          {/* Hamburger – mobile only */}
+          {/* Mobile hamburger */}
           <button className="menu-toggle" onClick={() => setMenuOpen(true)}>
             <FiMenu />
           </button>
 
-          <NavLink to="/" className="logo">
-            <span className="logo-gold">JEWELLERY</span>{" "}
-            <span className="logo-dark">SHOP</span>
-          </NavLink>
+          {/* ✅ LOGO COMPONENT */}
+          <Logo />
         </div>
 
         {/* Desktop menu */}
@@ -76,7 +89,6 @@ const Navbar = () => {
             <FiUser /> Login
           </button>
 
-          {/* Theme icon */}
           <button
             className="theme-btn"
             onClick={() => setDarkMode(!darkMode)}
@@ -86,13 +98,13 @@ const Navbar = () => {
         </div>
       </header>
 
-      {/* ================= MOBILE DRAWER ONLY ================= */}
+      {/* ================= MOBILE DRAWER ================= */}
       <aside
         ref={drawerRef}
         className={`drawer ${menuOpen ? "open" : ""}`}
       >
         <div className="drawer-top">
-          <h3>JEWELLERY SHOP</h3>
+          <Logo />
           <button onClick={() => setMenuOpen(false)}>
             <FiX />
           </button>
@@ -124,7 +136,6 @@ const Navbar = () => {
             <FiUser /> Login
           </button>
 
-          {/* icon-only dark mode */}
           <button
             className="drawer-theme-icon"
             onClick={() => setDarkMode(!darkMode)}

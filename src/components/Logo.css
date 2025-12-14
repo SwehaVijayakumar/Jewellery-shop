@@ -1,0 +1,23 @@
+.logo-link {
+  display: flex;
+  align-items:center;
+  margin-left: 10px;
+}
+
+.site-logo {
+  height: 80px;
+  width: 150px;
+  transition: height 0.3s ease;
+}
+
+/* Shrink when scrolled */
+.navbar.scrolled .site-logo {
+  height: 46px;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .site-logo {
+    height: 48px;
+  }
+}
