@@ -3,17 +3,14 @@ import "./NewArrivalCard.css";
 
 function NewArrivalCard({ product }) {
   return (
-    <div className="arrival-card">
-      {/* Discount badge */}
+    <div className="product-card">
       {product.discount && (
         <span className="discount-badge">-{product.discount}%</span>
       )}
 
-      {/* Image */}
       <div className="product-img">
         <img src={product.image} alt={product.name} />
 
-        {/* Hover icons */}
         <div className="hover-actions">
           <button><FaEye /></button>
           <button><FaLink /></button>
@@ -21,22 +18,16 @@ function NewArrivalCard({ product }) {
         </div>
       </div>
 
-      {/* Info */}
       <div className="product-info">
         <h4>{product.name}</h4>
 
-        {/* Rating */}
         <div className="rating">
           {[...Array(5)].map((_, i) => (
-            <FaStar
-              key={i}
-              className={i < product.rating ? "filled" : ""}
-            />
+            <FaStar key={i} className={i < product.rating ? "filled" : ""} />
           ))}
           <span>({product.reviews})</span>
         </div>
 
-        {/* Price */}
         <div className="price">
           {product.from && <span className="from">From </span>}
           <span className="new">Rs. {product.price}</span>

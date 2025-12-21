@@ -339,3 +339,15 @@ body.dark-mode .auth-container input {
     grid-template-columns: repeat(4, 1fr);
   }
 }
+.new-arrivals {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* ✅ 2 per row */
+  gap: 16px;
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+  .new-arrivals {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
