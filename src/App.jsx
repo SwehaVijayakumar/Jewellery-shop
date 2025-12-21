@@ -1,10 +1,5 @@
 import React from "react";
-import {
-  Routes,
-  Route,
-  Navigate,
-  useLocation,
-} from "react-router-dom";
+import { Routes, Route, Navigate, useLocation } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 
 import Navbar from "./components/Navbar";
@@ -18,16 +13,12 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import ForgotPassword from "./pages/ForgotPassword";
 
-import "./App.css";
-
-/* Page animation wrapper */
 const PageWrapper = ({ children }) => (
   <motion.div
-    initial={{ opacity: 0, y: 40 }}
+    initial={{ opacity: 0, y: 30 }}
     animate={{ opacity: 1, y: 0 }}
-    exit={{ opacity: 0, y: -30 }}
-    transition={{ duration: 0.6, ease: "easeInOut" }}
-    style={{ minHeight: "100vh" }}
+    exit={{ opacity: 0, y: -20 }}
+    transition={{ duration: 0.4 }}
   >
     {children}
   </motion.div>
@@ -39,91 +30,16 @@ const AnimatedRoutes = () => {
   return (
     <AnimatePresence mode="wait">
       <Routes location={location} key={location.pathname}>
-        <Route
-          path="/"
-          element={
-            <PageWrapper>
-              <Home />
-            </PageWrapper>
-          }
-        />
+        <Route path="/" element={<PageWrapper><Home /></PageWrapper>} />
+        <Route path="/shop" element={<PageWrapper><Shop /></PageWrapper>} />
+        <Route path="/categories" element={<PageWrapper><Categories /></PageWrapper>} />
+        <Route path="/wishlist" element={<PageWrapper><Wishlist /></PageWrapper>} />
+        <Route path="/cart" element={<PageWrapper><Cart /></PageWrapper>} />
+        <Route path="/login" element={<PageWrapper><Login /></PageWrapper>} />
+        <Route path="/signup" element={<PageWrapper><Signup /></PageWrapper>} />
+        <Route path="/forgot-password" element={<PageWrapper><ForgotPassword /></PageWrapper>} />
 
-        <Route
-          path="/shop"
-          element={
-            <PageWrapper>
-              <Shop />
-            </PageWrapper>
-          }
-        />
-
-        <Route
-          path="/categories"
-          element={
-            <PageWrapper>
-              <Categories />
-            </PageWrapper>
-          }
-        />
-
-        {/* Dynamic category route */}
-        <Route
-          path="/category/:type"
-          element={
-            <PageWrapper>
-              <Categories />
-            </PageWrapper>
-          }
-        />
-
-        <Route
-          path="/wishlist"
-          element={
-            <PageWrapper>
-              <Wishlist />
-            </PageWrapper>
-          }
-        />
-
-        <Route
-          path="/cart"
-          element={
-            <PageWrapper>
-              <Cart />
-            </PageWrapper>
-          }
-        />
-
-        {/* Auth routes */}
-        <Route
-          path="/login"
-          element={
-            <PageWrapper>
-              <Login />
-            </PageWrapper>
-          }
-        />
-
-        <Route
-          path="/signup"
-          element={
-            <PageWrapper>
-              <Signup />
-            </PageWrapper>
-          }
-        />
-
-        <Route
-          path="/forgot-password"
-          element={
-            <PageWrapper>
-              <ForgotPassword />
-            </PageWrapper>
-          }
-        />
-
-        {/* Redirect unknown paths */}
-        <Route path="*" element={<Navigate to="/" replace />} />
+        <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </AnimatePresence>
   );
