@@ -12,6 +12,10 @@ import {
   FiShoppingCart,
   FiUser,
 } from "react-icons/fi";
+
+import { useCart } from "../context/CartContext";
+import { useWishlist } from "../context/WishlistContext";
+
 import Logo from "./Logo";
 import "./Navbar.css";
 
@@ -21,6 +25,9 @@ const Navbar = () => {
     localStorage.getItem("darkMode") === "true"
   );
   const [scrolled, setScrolled] = useState(false);
+
+  const { cart } = useCart();
+  const { wishlist } = useWishlist();
 
   const navigate = useNavigate();
   const drawerRef = useRef(null);
@@ -55,8 +62,32 @@ const Navbar = () => {
     { name: "Home", path: "/", icon: <FiHome /> },
     { name: "Shop", path: "/shop", icon: <FiShoppingBag /> },
     { name: "Categories", path: "/categories", icon: <FiGrid /> },
-    { name: "Wishlist", path: "/wishlist", icon: <FiHeart /> },
-    { name: "Cart", path: "/cart", icon: <FiShoppingCart /> },
+
+    {
+      name: "Wishlist",
+      path: "/wishlist",
+      icon: (
+        <span className="icon-badge-wrap">
+          <FiHeart />
+          {wishlist.length > 0 && (
+            <span className="nav-badge">{wishlist.length}</span>
+          )}
+        </span>
+      ),
+    },
+
+    {
+      name: "Cart",
+      path: "/cart",
+      icon: (
+        <span className="icon-badge-wrap">
+          <FiShoppingCart />
+          {cart.length > 0 && (
+            <span className="nav-badge">{cart.length}</span>
+          )}
+        </span>
+      ),
+    },
   ];
 
   return (
@@ -69,7 +100,7 @@ const Navbar = () => {
             <FiMenu />
           </button>
 
-          {/* ✅ LOGO COMPONENT */}
+          {/* LOGO */}
           <Logo />
         </div>
 
@@ -145,7 +176,9 @@ const Navbar = () => {
         </div>
       </aside>
 
-      {menuOpen && <div className="overlay" onClick={() => setMenuOpen(false)} />}
+      {menuOpen && (
+        <div className="overlay" onClick={() => setMenuOpen(false)} />
+      )}
     </>
   );
 };

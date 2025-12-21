@@ -1,26 +1,48 @@
-import React from "react";
-import ProductCard from "../components/ProductCard";
+import { useWishlist } from "../context/WishlistContext";
+import { useCart } from "../context/CartContext";
+import "./Wishlist.css"; // ✅ CORRECT PLACE
 
-const Wishlist = () => {
-  const wishlistProducts = [
-    { name: "Lakshmi Coin Necklace", price: 550, image: "/images/necklace.jpg" },
-    { name: "Ruby Floral Earrings", price: 199, image: "/images/necklace.jpg" },
-  ];
+function Wishlist() {
+  const { wishlist, removeFromWishlist } = useWishlist();
+  const { addToCart } = useCart();
+
+  if (wishlist.length === 0) {
+    return <div className="wishlist-empty">Your wishlist is empty 💔</div>;
+  }
 
   return (
-    <div className="page-container">
-      <h2>Your Wishlist ❤️</h2>
-      {wishlistProducts.length > 0 ? (
-        <div className="product-list">
-          {wishlistProducts.map((prod, idx) => (
-            <ProductCard key={idx} {...prod} />
-          ))}
-        </div>
-      ) : (
-        <p>No items in wishlist yet.</p>
-      )}
+    <div className="wishlist-page">
+      <h2>My Wishlist ({wishlist.length})</h2>
+
+      <div className="wishlist-grid">
+        {wishlist.map((item) => (
+          <div className="wishlist-card fade-in" key={item.id}>
+            <img src={item.image} alt={item.name} />
+
+            <h4>{item.name}</h4>
+            <p>Rs. {item.price}</p>
+
+            <button
+              className="move-btn"
+              onClick={() => {
+                addToCart(item);
+                removeFromWishlist(item.id);
+              }}
+            >
+              MOVE TO CART
+            </button>
+
+            <button
+              className="remove-btn"
+              onClick={() => removeFromWishlist(item.id)}
+            >
+              REMOVE
+            </button>
+          </div>
+        ))}
+      </div>
     </div>
   );
-};
+}
 
 export default Wishlist;

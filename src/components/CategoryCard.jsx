@@ -1,26 +1,16 @@
+// src/components/CategoryCard.jsx
 import { Link } from "react-router-dom";
-import categories from "../data/categories";
 import "./CategoryCard.css";
 
-function CategoryCard() {
+function CategoryCard({ title, image, link }) {
   return (
-    
-    <section className="category-section">
-   
-      {categories.map((cat) => (
-        <Link
-          to={cat.link}
-          className="category-card fade-in"
-          key={cat.id}
-        >
-          <img src={cat.image} alt={cat.title} />
-          <div className="category-overlay">
-            <h2>{cat.title}</h2>
-          </div>
-        </Link>
-      ))}
+    <Link to={link} className="category-card">
+      <img src={image} alt={title} />
 
-    </section>
+      <div className="category-overlay">
+        <h2>{title}</h2>
+      </div>
+    </Link>
   );
 }
 

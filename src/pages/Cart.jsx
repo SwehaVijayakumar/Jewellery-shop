@@ -1,33 +1,85 @@
-import React, { useContext } from "react";
-import { CartContext } from "../context/CartContext";
+import React from "react";
+import { useCart } from "../context/CartContext";
+import { FiPlus, FiMinus, FiTrash2 } from "react-icons/fi";
+import "./Cart.css";
 
 const Cart = () => {
-  const { cart, setCart } = useContext(CartContext);
+  const {
+    cart,
+    removeFromCart,
+    increaseQty,
+    decreaseQty,
+  } = useCart();
 
-  const removeFromCart = (name) => {
-    const updatedCart = cart.filter(item => item.name !== name);
-    setCart(updatedCart);
-  };
+  const totalPrice = cart.reduce(
+    (sum, item) => sum + item.qty * Number(item.price.replace(/,/g, "")),
+    0
+  );
+
+  if (cart.length === 0) {
+    return (
+      <div className="cart-empty">
+        <img src="/images/empty-cart.png" alt="Empty cart" />
+        <h2>Your cart is empty</h2>
+        <p>Add items to see them here</p>
+      </div>
+    );
+  }
 
   return (
-    <div className="page-container">
-      <h2>Your Cart</h2>
-      {cart.length === 0 ? (
-        <p>Your cart is empty.</p>
-      ) : (
-        <div className="product-list">
-          {cart.map((item, idx) => (
-            <div key={idx} className="product-card">
-              <div className="image-box">
-                <img src={item.image} alt={item.name} />
+    <div className="cart-page">
+      {/* LEFT SIDE */}
+      <div className="cart-items">
+        {cart.map((item) => (
+          <div className="cart-card" key={item.id}>
+            <img src={item.image} alt={item.name} />
+
+            <div className="cart-info">
+              <h4>{item.name}</h4>
+              <p className="cart-price">₹ {item.price}</p>
+
+              <div className="qty-controls">
+                <button onClick={() => decreaseQty(item.id)}>
+                  <FiMinus />
+                </button>
+                <span>{item.qty}</span>
+                <button onClick={() => increaseQty(item.id)}>
+                  <FiPlus />
+                </button>
               </div>
-              <h3>{item.name}</h3>
-              <p>₹{item.price}</p>
-              <button className="remove-btn" onClick={() => removeFromCart(item.name)}>Remove</button>
             </div>
-          ))}
+
+            <button
+              className="remove-btn"
+              onClick={() => removeFromCart(item.id)}
+            >
+              <FiTrash2 />
+            </button>
+          </div>
+        ))}
+      </div>
+
+      {/* RIGHT SIDE */}
+      <div className="price-box">
+        <h3>Price Details</h3>
+
+        <div className="price-row">
+          <span>Total Items</span>
+          <span>{cart.length}</span>
         </div>
-      )}
+
+        <div className="price-row">
+          <span>Delivery</span>
+          <span className="free">FREE</span>
+        </div>
+
+        <div className="price-row total">
+          <span>Total Amount</span>
+          <span>₹ {totalPrice.toLocaleString()}</span>
+        </div>
+
+        <button className="place-order">Place Order</button>
+      </div>
     </div>
   );
 };

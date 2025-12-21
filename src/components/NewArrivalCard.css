@@ -1,62 +1,79 @@
-/* ===== GRID LAYOUT ===== */
-.new-arrivals-grid {
+/* ================= GRID WRAPPER ================= */
+.new-arrivals {
   display: grid;
-  grid-template-columns: repeat(2, 1fr); /* 2 per row */
-  gap: 16px;
-  padding: 0 16px;
+  grid-template-columns: repeat(2, 1fr); /* 2 per row mobile */
+  gap: 14px;
+  padding: 20px;
+}
+
+/* Tablet */
+@media (min-width: 768px) {
+  .new-arrivals {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
 }
 
 /* Desktop */
-@media (min-width: 768px) {
-  .new-arrivals-grid {
+@media (min-width: 1024px) {
+  .new-arrivals {
     grid-template-columns: repeat(4, 1fr);
   }
 }
 
-/* ===== CARD ===== */
+/* ================= PRODUCT CARD ================= */
 .product-card {
   background: #fff;
-  border-radius: 6px;
+  border-radius: 10px;
   overflow: hidden;
   position: relative;
-  transition: transform 0.3s ease;
+  font-family: "Poppins", sans-serif;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .product-card:hover {
   transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
 }
 
-body.dark-mode .product-card {
-  background: #1e1e1e;
+/* ================= IMAGE (SQUARE) ================= */
+.product-img {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1; /* 🔥 Perfect square */
+  overflow: hidden;
 }
 
-/* IMAGE */
 .product-img img {
   width: 100%;
-  height: 260px;
-  object-fit: cover;
+  height: 100%;
+  object-fit: cover; /* full image fill */
 }
 
-/* DISCOUNT */
+/* ================= DISCOUNT ================= */
 .discount-badge {
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: 8px;
+  right: 8px;
   background: #e10600;
   color: #fff;
   font-size: 12px;
   padding: 4px 6px;
+  font-weight: 600;
+  border-radius: 4px;
+  z-index: 2;
 }
 
-/* HOVER ICONS */
+/* ================= HOVER ICONS ================= */
 .hover-actions {
   position: absolute;
   bottom: 10px;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
-  gap: 10px;
+  gap: 8px;
   opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
 .product-img:hover .hover-actions {
@@ -67,15 +84,12 @@ body.dark-mode .product-card {
   background: #fff;
   border: none;
   padding: 8px;
+  font-size: 14px;
+  border-radius: 50%;
   cursor: pointer;
 }
 
-body.dark-mode .hover-actions button {
-  background: #333;
-  color: #fff;
-}
-
-/* INFO */
+/* ================= INFO ================= */
 .product-info {
   padding: 10px;
   text-align: center;
@@ -83,13 +97,17 @@ body.dark-mode .hover-actions button {
 
 .product-info h4 {
   font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 4px;
 }
 
-/* RATING */
+/* ================= RATING ================= */
 .rating {
   display: flex;
   justify-content: center;
-  gap: 4px;
+  align-items: center;
+  gap: 3px;
+  font-size: 13px;
 }
 
 .rating svg {
@@ -97,25 +115,125 @@ body.dark-mode .hover-actions button {
 }
 
 .rating .filled {
-  color: gold;
+  color: #f4b400;
 }
 
-/* PRICE */
+.rating span {
+  font-size: 12px;
+  color: #777;
+}
+
+/* ================= PRICE ================= */
 .price {
   margin-top: 6px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.price .from {
+  font-size: 12px;
 }
 
 .price .new {
   color: #e91e63;
   font-weight: 600;
+  font-size: 14px;
 }
 
 .price .old {
-  text-decoration: line-through;
+  font-size: 12px;
   color: #999;
-  font-size: 13px;
+  text-decoration: line-through;
+}
+
+/* ================= DARK MODE ================= */
+body.dark-mode .product-card {
+  background: #1e1e1e;
+}
+
+body.dark-mode .product-info h4,
+body.dark-mode .price .new,
+body.dark-mode .rating span {
+  color: #fff;
 }
 
 body.dark-mode .price .old {
-  color: #bbb;
+  color: #aaa;
+}
+
+body.dark-mode .hover-actions button {
+  background: #2a2a2a;
+  color: #fff;
+}
+/* ===== ICON FIX ===== */
+.hover-actions button svg,
+.rating svg {
+  font-size: 16px;
+  color: #f5a623; /* gold stars */
+  display: inline-block;
+}
+
+/* Empty stars */
+.rating svg {
+  color: #ccc;
+}
+
+.rating .filled {
+  color: #f5a623;
+}
+
+/* Prevent dots issue */
+.hover-actions button {
+  line-height: 1;
+}
+
+/* Wishlist icon */
+.hover-actions button svg {
+  color: #111;
+}
+
+/* Dark mode */
+body.dark-mode .hover-actions button svg {
+  color: #fff;
+}
+.heart-btn {
+  color: #c55d5d;
+  transition: all 0.2s ease;
+}
+
+.heart-btn.active {
+  color: crimson;
+  transform: scale(1.2);
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.rating .filled {
+  color: gold;
+  cursor: pointer;
+}
+
+.rating .empty {
+  color: #ccc;
+  cursor: pointer;
+}
+
+.rating-count {
+  font-size: 12px;
+  color: #555;
+}
+
+.wishlist-btn {
+  color: #aaa;
+}
+
+.wishlist-btn.active {
+  color: crimson;
 }

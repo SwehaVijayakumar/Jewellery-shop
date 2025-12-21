@@ -1,6 +1,5 @@
 import React from "react";
 import {
-  BrowserRouter as Router,
   Routes,
   Route,
   Navigate,
@@ -67,7 +66,7 @@ const AnimatedRoutes = () => {
           }
         />
 
-        {/* ✅ Dynamic category route (from CategoryCard click) */}
+        {/* Dynamic category route */}
         <Route
           path="/category/:type"
           element={
@@ -132,10 +131,10 @@ const AnimatedRoutes = () => {
 
 export default function App() {
   return (
-    <Router basename="/Jewellery-shop">
+    <>
       <Navbar />
       <AnimatedRoutes />
       <Footer />
-    </Router>
+    </>
   );
 }
