@@ -4,7 +4,9 @@ import "./CategoryCard.css";
 
 function CategoryCard() {
   return (
+    
     <section className="category-section">
+   
       {categories.map((cat) => (
         <Link
           to={cat.link}
@@ -17,6 +19,7 @@ function CategoryCard() {
           </div>
         </Link>
       ))}
+
     </section>
   );
 }

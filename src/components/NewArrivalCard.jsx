@@ -3,7 +3,7 @@ import "./NewArrivalCard.css";
 
 function NewArrivalCard({ product }) {
   return (
-    <div className="product-card">
+    <div className="arrival-card">
       {/* Discount badge */}
       {product.discount && (
         <span className="discount-badge">-{product.discount}%</span>

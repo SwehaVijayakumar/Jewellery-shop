@@ -224,3 +224,118 @@ body.dark-mode .auth-container input {
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 24px;
 }
+/* ===== HOME LAYOUT ===== */
+.home-container {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title {
+  text-align: center;
+  margin: 40px 0 20px;
+  letter-spacing: 4px;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.center-title {
+  margin-top: 30px;
+}
+
+/* ===== CATEGORY GRID ===== */
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+  padding: 0 20px;
+}
+
+/* ===== NEW ARRIVALS GRID (MEESHO STYLE) ===== */
+.new-arrivals-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  padding: 0 20px 40px;
+}
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .new-arrivals-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Mobile – 2 cards per row */
+@media (max-width: 768px) {
+  .new-arrivals-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .section-title {
+    font-size: 1rem;
+    letter-spacing: 2px;
+  }
+}
+/* ===== NEW ARRIVALS GRID ===== */
+.new-arrivals-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  padding: 20px;
+}
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .new-arrivals-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Mobile – 2 cards per row */
+@media (max-width: 768px) {
+  .new-arrivals-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Small mobile */
+@media (max-width: 480px) {
+  .new-arrivals-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+}
+
+/* ===== CATEGORY GRID ===== */
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 24px;
+  padding: 20px;
+}
+
+.category-link {
+  text-decoration: none;
+}
+.new-arrivals {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* ✅ 2 per row */
+  gap: 14px;
+  padding: 10px;
+}
+
+/* Tablet */
+@media (min-width: 768px) {
+  .new-arrivals {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+  .new-arrivals {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

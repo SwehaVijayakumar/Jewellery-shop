@@ -83,7 +83,7 @@ const Home = () => {
 
       {/* ================= CATEGORIES ================= */}
       <section className="categories-section">
-        <h2 className="section-title">Shop By Category</h2>
+        <h2 className="section-title">-- SHOP BY CATEGORIES --</h2>
 
         <div className="category-list">
           {categories.map((cat, idx) => (
@@ -94,7 +94,7 @@ const Home = () => {
 
       {/* ================= NEW ARRIVALS ================= */}
       <section className="products-section">
-        <h2 className="section-title">New Arrivals</h2>
+        <h2 className="section-title">-- New Arrivals --</h2>
 
         <div className="new-arrivals">
           {products.map((prod) => (

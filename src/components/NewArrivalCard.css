@@ -1,9 +1,10 @@
-.product-card {
-  position: relative;
-  width: 280px;
+/* ================= GRID CARD ================= */
+.arrival-card {
+  width: 100%;
   font-family: "Poppins", sans-serif;
 }
 
+/* IMAGE */
 .product-img {
   position: relative;
   overflow: hidden;
@@ -11,29 +12,31 @@
 
 .product-img img {
   width: 100%;
-  display: block;
+  height: 260px;
+  object-fit: cover;
+  border-radius: 4px;
 }
 
-/* Discount badge */
+/* DISCOUNT */
 .discount-badge {
   position: absolute;
-  top: 12px;
-  right: 12px;
+  top: 10px;
+  right: 10px;
   background: #e10600;
   color: #fff;
-  font-size: 13px;
+  font-size: 12px;
   padding: 4px 6px;
   z-index: 2;
 }
 
-/* Hover actions */
+/* HOVER ICONS */
 .hover-actions {
   position: absolute;
-  bottom: 12px;
+  bottom: 10px;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
-  gap: 10px;
+  gap: 8px;
   opacity: 0;
   transition: 0.3s ease;
 }
@@ -45,29 +48,29 @@
 .hover-actions button {
   background: #fff;
   border: none;
-  padding: 10px;
+  padding: 8px;
   cursor: pointer;
   font-size: 14px;
 }
 
-/* Info */
+/* INFO */
 .product-info {
   text-align: center;
-  margin-top: 14px;
+  margin-top: 10px;
 }
 
 .product-info h4 {
+  font-size: 14px;
   font-weight: 500;
-  margin-bottom: 6px;
+  margin-bottom: 4px;
 }
 
-/* Rating */
+/* RATING */
 .rating {
   display: flex;
   justify-content: center;
-  align-items: center;
   gap: 4px;
-  font-size: 14px;
+  font-size: 13px;
 }
 
 .rating svg {
@@ -78,138 +81,19 @@
   color: #000;
 }
 
-/* Price */
+/* PRICE */
 .price {
-  margin-top: 8px;
-  font-size: 16px;
-}
-
-.price .from {
+  margin-top: 6px;
   font-size: 14px;
 }
 
 .price .new {
   color: #e91e63;
   font-weight: 600;
-  margin-right: 6px;
 }
 
 .price .old {
   color: #999;
   text-decoration: line-through;
-  font-size: 14px;
-}
-/* ===== MOBILE FIRST ===== */
-
-.arrival-card {
-  width: 100%;
-  padding: 8px;
-  box-sizing: border-box;
-  text-align: center;
-  font-family: "Poppins", sans-serif;
-}
-
-/* IMAGE */
-.image-wrap {
-  position: relative;
-  overflow: hidden;
-}
-
-.image-wrap img {
-  width: 100%;
-  height: 320px;
-  object-fit: cover;
-  border-radius: 4px;
-}
-
-/* DISCOUNT TAG */
-.discount {
-  position: absolute;
-  top: 8px;
-  right: 8px;
-  background: #e10600;
-  color: #fff;
   font-size: 12px;
-  padding: 4px 6px;
-  font-weight: 600;
-  z-index: 2;
-}
-
-/* HOVER ICONS */
-.hover-icons {
-  position: absolute;
-  bottom: 10px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  gap: 8px;
-}
-
-.hover-icons svg {
-  background: white;
-  padding: 8px;
-  font-size: 14px;
-  cursor: pointer;
-  border-radius: 2px;
-}
-
-/* TEXT */
-.arrival-card h4 {
-  font-size: 15px;
-  margin: 10px 0 4px;
-  font-weight: 500;
-}
-
-.rating {
-  font-size: 13px;
-  color: #111;
-  margin-bottom: 4px;
-}
-
-/* PRICE */
-.price {
-  display: flex;
-  justify-content: center;
-  gap: 8px;
-  align-items: center;
-}
-
-.price .new {
-  color: #e60073;
-  font-weight: 600;
-  font-size: 15px;
-}
-
-.price .old {
-  text-decoration: line-through;
-  color: #999;
-  font-size: 13px;
-}
-
-/* ===== SLIDER SPACING ===== */
-
-.slick-slide {
-  padding: 0 6px;
-}
-
-.slick-list {
-  margin: 0 -6px;
-}
-
-/* ===== TABLET ===== */
-@media (min-width: 600px) {
-  .image-wrap img {
-    height: 380px;
-  }
-}
-
-/* ===== DESKTOP ===== */
-@media (min-width: 1024px) {
-  .arrival-card {
-    padding: 12px;
-  }
-
-  .image-wrap img {
-    height: 420px;
-  }
 }
